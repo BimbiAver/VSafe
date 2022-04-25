@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".LoginWithMobActivity">
 
     <ImageView
@@ -51,4 +53,54 @@
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <EditText
+        android:id="@+id/edTxtMobNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/edttxt_states"
+        android:ems="10"
+        android:hint="Mobile Number"
+        android:inputType="number"
+        android:maxLength="10"
+        android:padding="7dp"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textColor="#303030"
+        android:textColorHighlight="#56C1E5"
+        android:textColorHint="#999"
+        android:textColorLink="#56C1E5"
+        android:textCursorDrawable="@null"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edTxtMobVerify"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/edttxt_states"
+        android:ems="10"
+        android:hint="Verification Code"
+        android:inputType="number"
+        android:maxLength="6"
+        android:padding="7dp"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textColor="#303030"
+        android:textColorHighlight="#56C1E5"
+        android:textColorHint="#999"
+        android:textColorLink="#56C1E5"
+        android:textCursorDrawable="@null"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edTxtMobNumber" />
 </androidx.constraintlayout.widget.ConstraintLayout>

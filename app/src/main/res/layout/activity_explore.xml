@@ -54,7 +54,7 @@
         android:lineSpacingExtra="2sp"
         android:text="Emergencies can strike at any time. Luckily, here is VSafe, a mobile app developed by Orionsoft Inc. to help you stay safe in an emergency. With VSafe, you can inform the relevant situation and departments that you need to inform when you or someone is in an emergency. The selected departments and pre-defined guardians will get a message with your location, informing that the relevant person is in an emergency. They will come directly to save you."
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="#303030"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
