@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- edit text pressed state -->
+    <item
+        android:state_pressed="true"
+        android:drawable="@drawable/mobile_phone_focused"
+        />
+    <!-- edit text focused state -->
+    <item
+        android:state_focused="true"
+        android:drawable="@drawable/mobile_phone_focused"
+        />
+    <!-- edit text default state -->
+    <item
+        android:drawable="@drawable/mobile_phone_default"
+        />
+</selector>

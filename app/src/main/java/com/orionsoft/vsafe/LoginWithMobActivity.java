@@ -12,6 +12,7 @@ import android.widget.EditText;
 public class LoginWithMobActivity extends AppCompatActivity {
 
     private EditText edTxtMobNumber;
+    private EditText edTxtMobVerify;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +20,9 @@ public class LoginWithMobActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_with_mob);
 
         edTxtMobNumber = findViewById(R.id.edTxtMobNumber);
+        edTxtMobVerify = findViewById(R.id.edTxtMobVerify);
 
-//        Remove focus from EditTexts when the editing is done
+//        Remove focus from edTxtMobNumber when the editing is done
         edTxtMobNumber.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View view, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_ENTER) {
@@ -28,6 +30,21 @@ public class LoginWithMobActivity extends AppCompatActivity {
                     imm.hideSoftInputFromWindow(getWindow().getDecorView().getRootView().getWindowToken(), 0);
                     edTxtMobNumber.setFocusable(false);
                     edTxtMobNumber.setFocusableInTouchMode(true);
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+
+        //        Remove focus from edTxtMobVerify when the editing is done
+        edTxtMobVerify.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View view, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(getWindow().getDecorView().getRootView().getWindowToken(), 0);
+                    edTxtMobVerify.setFocusable(false);
+                    edTxtMobVerify.setFocusableInTouchMode(true);
                     return true;
                 } else {
                     return false;
