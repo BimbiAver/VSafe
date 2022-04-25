@@ -3,26 +3,47 @@ package com.orionsoft.vsafe;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 
-public class LoginWithMobActivity extends AppCompatActivity {
+public class LoginWithMobActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText edTxtMobNumber;
     private EditText edTxtMobVerify;
+
+    private TextView txtEmailLogin;
+
+    //    Activity wide interface - onClick() method
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.txtEmailLogin:
+                Intent intent = new Intent(this, LoginWithEmailActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                break;
+            default:
+                break;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_with_mob);
 
-        edTxtMobNumber = findViewById(R.id.edTxtMobNumber);
-        edTxtMobVerify = findViewById(R.id.edTxtMobVerify);
+        //        Instantiate the setOnClickListener(s) at runtime
+        txtEmailLogin = findViewById(R.id.txtEmailLogin);
+        txtEmailLogin.setOnClickListener(this);
 
 //        Remove focus from edTxtMobNumber when the editing is done
+        edTxtMobNumber = findViewById(R.id.edTxtMobNumber);
+
         edTxtMobNumber.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View view, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_ENTER) {
@@ -38,6 +59,8 @@ public class LoginWithMobActivity extends AppCompatActivity {
         });
 
         //        Remove focus from edTxtMobVerify when the editing is done
+        edTxtMobVerify = findViewById(R.id.edTxtMobVerify);
+
         edTxtMobVerify.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View view, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_ENTER) {
