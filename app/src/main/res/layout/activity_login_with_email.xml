@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".LoginWithEmailActivity">
 
   <ImageView
@@ -92,11 +93,11 @@
       android:layout_marginTop="50dp"
       android:layout_marginEnd="25dp"
       android:background="@drawable/edttxt_states"
-      android:drawableLeft="@drawable/mobile_phone"
+      android:drawableLeft="@drawable/email"
       android:drawablePadding="20dp"
       android:ems="10"
       android:hint="Email Address"
-      android:inputType="phone"
+      android:inputType="textEmailAddress"
       android:maxLength="10"
       android:padding="7dp"
       android:singleLine="true"
@@ -171,13 +172,13 @@
       app:layout_constraintTop_toBottomOf="@+id/btnEmailLogin" />
 
   <TextView
-      android:id="@+id/textView8"
+      android:id="@+id/txtAccntReg2"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginStart="25dp"
       android:layout_marginTop="5dp"
       android:layout_marginEnd="25dp"
-      android:text="Already have an account? Log In"
+      android:text="Not registered yet? Create an account"
       android:textAlignment="center"
       android:textColor="#003366"
       android:textSize="16sp"

@@ -17,14 +17,22 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
     private EditText edTxtMobVerify;
 
     private TextView txtEmailLogin;
+    private TextView txtAccntReg1;
+
+//        -----------------------------------------------------------------------------------------------
 
     //    Activity wide interface - onClick() method
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.txtEmailLogin:
-                Intent intent = new Intent(this, LoginWithEmailActivity.class);
-                startActivity(intent);
+                Intent intent1 = new Intent(this, LoginWithEmailActivity.class);
+                startActivity(intent1);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                break;
+            case R.id.txtAccntReg1:
+                Intent intent2 = new Intent(this, RegistrationActivity.class);
+                startActivity(intent2);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
             default:
@@ -32,14 +40,23 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
+//        -----------------------------------------------------------------------------------------------
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_with_mob);
 
+//        -----------------------------------------------------------------------------------------------
+
         //        Instantiate the setOnClickListener(s) at runtime
         txtEmailLogin = findViewById(R.id.txtEmailLogin);
         txtEmailLogin.setOnClickListener(this);
+
+        txtAccntReg1 = findViewById(R.id.txtAccntReg1);
+        txtAccntReg1.setOnClickListener(this);
+
+//        -----------------------------------------------------------------------------------------------
 
 //        Remove focus from edTxtMobNumber when the editing is done
         edTxtMobNumber = findViewById(R.id.edTxtMobNumber);
@@ -75,6 +92,8 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
             }
         });
     }
+
+//        -----------------------------------------------------------------------------------------------
 
     @Override
     public void onBackPressed() {
