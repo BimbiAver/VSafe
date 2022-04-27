@@ -3,11 +3,12 @@ package com.orionsoft.vsafe;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,6 +17,7 @@ import java.util.Locale;
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText edTxtDOB;
+    private Spinner spnBloodGrp;
 
     final Calendar myCalendar= Calendar.getInstance();
     DatePickerDialog.OnDateSetListener date;
@@ -26,7 +28,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.edTxtDOB:
+            case R.id.edTxtRegDOB:
                 showDatePickerDialog();
                 break;
             default:
@@ -42,7 +44,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 //        -----------------------------------------------------------------------------------------------
 
         //        Instantiate the setOnClickListener(s) at runtime
-        edTxtDOB = findViewById(R.id.edTxtDOB);
+        edTxtDOB = findViewById(R.id.edTxtRegDOB);
         edTxtDOB.setOnClickListener(this);
     }
 
@@ -56,6 +58,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
 //        -----------------------------------------------------------------------------------------------
 
+//    View DatePickerDialog
     private void showDatePickerDialog(){
         date = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -69,6 +72,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         new DatePickerDialog(RegistrationActivity.this,R.style.DatePickerDialog,date,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
+//    Update editText field with date of birth
     private void setDate(){
         String myFormat="yyyy/MM/dd";
         SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);

@@ -92,7 +92,12 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/scrollview_bg"
-        android:padding="15dp"
+        android:fadeScrollbars="false"
+        android:fillViewport="true"
+        android:paddingStart="15dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="15dp"
         app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,10 +106,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/edTxtNICNo"
+                android:id="@+id/edTxtRegNICNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edttxt_states"
@@ -121,10 +127,11 @@
                 android:textColorHint="#999"
                 android:textColorLink="#56C1E5"
                 android:textCursorDrawable="@null"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <EditText
-                android:id="@+id/edTxtFName"
+                android:id="@+id/edTxtRegFName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -142,10 +149,11 @@
                 android:textColorHint="#999"
                 android:textColorLink="#56C1E5"
                 android:textCursorDrawable="@null"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <EditText
-                android:id="@+id/edTxtLName"
+                android:id="@+id/edTxtRegLName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -163,10 +171,11 @@
                 android:textColorHint="#999"
                 android:textColorLink="#56C1E5"
                 android:textCursorDrawable="@null"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <RadioGroup
-                android:id="@+id/raGroupGender"
+                android:id="@+id/raGroupRegGender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -181,7 +190,7 @@
                     app:srcCompat="@drawable/gender" />
 
                 <RadioButton
-                    android:id="@+id/raBtnMale"
+                    android:id="@+id/raBtnRegMale"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="17dp"
@@ -194,7 +203,7 @@
                     android:textSize="18sp" />
 
                 <RadioButton
-                    android:id="@+id/raBtnFemale"
+                    android:id="@+id/raBtnRegFemale"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
@@ -208,7 +217,7 @@
             </RadioGroup>
 
             <EditText
-                android:id="@+id/edTxtDOB"
+                android:id="@+id/edTxtRegDOB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -230,7 +239,85 @@
                 android:textColorHint="#999"
                 android:textColorLink="#56C1E5"
                 android:textCursorDrawable="@null"
+                android:textSize="18sp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <EditText
+                android:id="@+id/edTxtRegAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edttxt_states"
+                android:drawableLeft="@drawable/address"
+                android:drawablePadding="20dp"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="Address"
+                android:inputType="textMultiLine|textPostalAddress|textCapWords"
+                android:lines="2"
+                android:maxLength="50"
+                android:maxLines="2"
+                android:padding="7dp"
+                android:scrollbars="vertical"
+                android:singleLine="true"
+                android:textColor="#303030"
+                android:textColorHighlight="#56C1E5"
+                android:textColorHint="#999"
+                android:textColorLink="#56C1E5"
+                android:textCursorDrawable="@null"
                 android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edTxtRegMobNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edttxt_states"
+                android:drawableLeft="@drawable/mobile_phone"
+                android:drawablePadding="20dp"
+                android:ems="10"
+                android:hint="Mobile Number"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:padding="7dp"
+                android:singleLine="true"
+                android:textColor="#303030"
+                android:textColorHighlight="#56C1E5"
+                android:textColorHint="#999"
+                android:textColorLink="#56C1E5"
+                android:textCursorDrawable="@null"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edTxtRegEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edttxt_states"
+                android:drawableLeft="@drawable/email"
+                android:drawablePadding="20dp"
+                android:ems="10"
+                android:hint="Email Address"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:padding="7dp"
+                android:singleLine="true"
+                android:textColor="#303030"
+                android:textColorHighlight="#56C1E5"
+                android:textColorHint="#999"
+                android:textColorLink="#56C1E5"
+                android:textCursorDrawable="@null"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spnBloodGrp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edttxt_states"
+                android:entries="@array/blood_group"
+                android:padding="7dp"
+                android:spinnerMode="dropdown" />
 
         </LinearLayout>
     </ScrollView>
