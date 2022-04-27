@@ -11,4 +11,12 @@
         <item>AB+</item>
         <item>AB-</item>
     </string-array>
+
+    <string-array name="relationship">
+        <item>Parent</item>
+        <item>Spouse</item>
+        <item>Child</item>
+        <item>Sibling</item>
+        <item>Other</item>
+    </string-array>
 </resources>
