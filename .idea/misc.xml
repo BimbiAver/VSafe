@@ -3,9 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/drawable/edttxt_default_state.xml" value="0.1945" />
+        <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/drawable/edttxt_focused_state.xml" value="0.1945" />
+        <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/drawable/edttxt_pressed_state.xml" value="0.1945" />
+        <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/drawable/edttxt_rounded_corners_border.xml" value="0.1945" />
+        <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/drawable/edttxt_states.xml" value="0.1945" />
+        <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/drawable/mobile_drawable_selector.xml" value="0.1945" />
+        <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/drawable/scrollview_bg.xml" value="0.25" />
         <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/drawable/splash_cover.xml" value="0.1945" />
-        <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/layout/activity_explore.xml" value="0.20416666666666666" />
-        <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/layout/activity_splash.xml" value="0.33" />
+        <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/layout/activity_dashboard.xml" value="0.20416666666666666" />
+        <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/layout/activity_explore.xml" value="0.25" />
+        <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/layout/activity_login_with_email.xml" value="0.25" />
+        <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/layout/activity_login_with_mob.xml" value="0.25" />
+        <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/layout/activity_registration.xml" value="0.25" />
+        <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/layout/activity_splash.xml" value="0.25" />
         <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1945" />
         <entry key="..\:/My-Projects/Mobile-Application/VSafe/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1945" />
       </map>
