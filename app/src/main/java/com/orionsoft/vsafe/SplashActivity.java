@@ -11,8 +11,6 @@ import android.view.WindowManager;
 
 public class SplashActivity extends AppCompatActivity {
 
-    final String appStatus = null;
-
 //        -----------------------------------------------------------------------------------------------
 
     @Override
@@ -32,7 +30,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                SharedPreferences settings = getSharedPreferences(appStatus, 0);
+                SharedPreferences settings = getSharedPreferences("AppStatus", 0);
 
                 if (settings.getBoolean("firstTime", true)) {
                     // The app is being launched for first time, do something
