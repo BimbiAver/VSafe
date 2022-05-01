@@ -12,6 +12,14 @@ public class User {
     private String emailAddress;
     private String bloodGroup;
 
+    public User(String NICNumber, String firstName, String lastName, String mobNumber, String emailAddress) {
+        this.NICNumber = NICNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.mobNumber = mobNumber;
+        this.emailAddress = emailAddress;
+    }
+
     public String getNICNumber() {
         return NICNumber;
     }
