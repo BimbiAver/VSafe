@@ -41,7 +41,7 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
         switch (view.getId()) {
             case R.id.btnMobNumLogin:
                 String btnText = btnMobNumLogin.getText().toString();
-                String mobNumber = edTxtMobNumber.getText().toString().substring(1);
+                String mobNumber = edTxtMobNumber.getText().toString();
                 String mobVerify = edTxtMobVerify.getText().toString();
                 if (mobNumber.isEmpty()) {
                     edTxtMobNumber.setError("Please enter your mobile number!");
@@ -49,7 +49,7 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
 //                    String verificationCode = generateVerificationCode.generateCode();
 //                    // Instantiate the RequestQueue
 //                    RequestQueue queue = Volley.newRequestQueue(this);
-//                    String url = "https://app.vsafe.care/send-sms/send_sms.php?to=" + mobNumber + "&msg=Your VSafe verification code is: " + verificationCode;
+//                    String url = "https://app.vsafe.care/send-sms/send_sms.php?to=" + mobNumber.substring(1) + "&msg=Your VSafe verification code is: " + verificationCode;
 //
 //                    // Request a string response from the provided URL
 //                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -159,6 +159,12 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
     public void onBackPressed() {
         finishAffinity(); // Removes the connection of the existing activity to its stack
         finish(); // The method onDestroy() is executed & exit the application
+    }
+
+//        -----------------------------------------------------------------------------------------------
+
+    private void checkUser() {
+
     }
 
 }
