@@ -142,6 +142,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/edttxt_states"
+        android:digits="0123456789"
         android:drawableLeft="@drawable/mobile_phone"
         android:drawablePadding="20dp"
         android:ems="10"
