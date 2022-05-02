@@ -29,6 +29,7 @@ public class LoginWithEmailActivity extends AppCompatActivity implements View.On
                 Intent intent1 = new Intent(this, LoginWithMobActivity.class);
                 startActivity(intent1);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
                 break;
             case R.id.txtAccntReg2:
                 Intent intent2 = new Intent(this, RegistrationActivity.class);

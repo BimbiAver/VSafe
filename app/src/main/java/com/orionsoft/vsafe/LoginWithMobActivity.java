@@ -48,7 +48,8 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
     ProgressDialog progressDialog;
 
     GenerateVerificationCode generateVerificationCode = new GenerateVerificationCode();
-    RequestQueue queue;// RequestQueue
+    RequestQueue queue; // Volley RequestQueue
+    StringRequest stringRequest; // Volley StringRequest
     User user;
 
 //        -----------------------------------------------------------------------------------------------
@@ -77,7 +78,7 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
                         public void run() {
                             progressDialog.dismiss();
                             if (usrCheckMsg.equals("User found!")) {
-//                                sendSMS(mobNumber, verificationCode);
+                                sendSMS(mobNumber, verificationCode);
                                 Toast.makeText(LoginWithMobActivity.this, usrCheckMsg, Toast.LENGTH_SHORT).show();
                                 txtMobOTPMsg.setText("Enter the OTP sent to +94" + mobNumber.substring(1));
                                 txtMobOTPMsg.setVisibility(View.VISIBLE);
@@ -95,7 +96,7 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
                 if (mobVerify.isEmpty() && btnText.equals("Login")) {
                     edTxtMobVerify.setError("Please enter the verification code!");
                 } else if (!mobNumber.isEmpty() && !mobVerify.isEmpty() && btnText.equals("Login")){
-                    if (!mobVerify.equals(verificationCode)){
+                    if (mobVerify.equals(verificationCode)){
 //                        Session management and redirection
                         // Storing the user in shared preferences
                         SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
@@ -112,6 +113,7 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
                 Intent intent2 = new Intent(this, LoginWithEmailActivity.class);
                 startActivity(intent2);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
                 break;
             case R.id.txtAccntReg1:
                 Intent intent3 = new Intent(this, RegistrationActivity.class);
@@ -201,9 +203,8 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
 //        -----------------------------------------------------------------------------------------------
 
     private void checkUser(String mobNumber) {
-        RequestQueue queue = Volley.newRequestQueue(this);
 
-        StringRequest postRequest = new StringRequest(Request.Method.POST, URLs.usrCheck,
+        stringRequest = new StringRequest(Request.Method.POST, URLs.usrCheck,
                 new Response.Listener<String>()
                 {
                     @Override
@@ -248,16 +249,16 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
                 return params;
             }
         };
-        queue.add(postRequest);
+        queue.add(stringRequest);
     }
 
 //        -----------------------------------------------------------------------------------------------
 
     private void sendSMS(String mobNumber, String verificationCode) {
-        String url = "https://app.vsafe.care/send-sms/send_sms.php?to=" + mobNumber.substring(1) + "&msg=Your VSafe verification code is: " + verificationCode;
+        String url = "https://app.vsafe.care/send-sms/send_sms.php?";
 
         // Request a string response from the provided URL
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+        stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -267,7 +268,17 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onErrorResponse(VolleyError error) {
             }
-        });
+        }){
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("to", mobNumber.substring(1));
+                params.put("msg", "Your VSafe verification code is: " + verificationCode);
+
+                return params;
+            }
+        };
 
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
