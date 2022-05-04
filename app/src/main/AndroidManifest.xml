@@ -15,7 +15,8 @@
         android:theme="@style/Theme.VSafe">
         <activity
             android:name=".DashboardActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".RegistrationActivity"
             android:exported="false"

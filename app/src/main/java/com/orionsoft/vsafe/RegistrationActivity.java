@@ -3,12 +3,14 @@ package com.orionsoft.vsafe;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -17,6 +19,9 @@ import java.util.Locale;
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText edTxtDOB;
+
+    private TextView txtAccntLogin;
+
     private Spinner spnBloodGrp;
 
     final Calendar myCalendar= Calendar.getInstance();
@@ -31,6 +36,10 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             case R.id.edTxtRegDOB:
                 showDatePickerDialog();
                 break;
+            case R.id.txtAccntLogin:
+                finish();
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                break;
             default:
                 break;
         }
@@ -41,11 +50,20 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
+        // If the user is already logged in, this will redirect the user to the Dashboard
+        if (SharedPrefManager.getInstance(this).isLoggedIn()) {
+            finish();
+            startActivity(new Intent(this, DashboardActivity.class));
+        }
+
 //        -----------------------------------------------------------------------------------------------
 
-        //        Instantiate the setOnClickListener(s) at runtime
+        // Instantiate the setOnClickListener(s) at runtime
         edTxtDOB = findViewById(R.id.edTxtRegDOB);
         edTxtDOB.setOnClickListener(this);
+
+        txtAccntLogin = findViewById(R.id.txtAccntLogin);
+        txtAccntLogin.setOnClickListener(this);
     }
 
 //        -----------------------------------------------------------------------------------------------

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -65,6 +66,8 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
 //  ----------------- Check whether the user is already exist and send the verification code --------------
                 if (mobNumber.isEmpty()) {
                     edTxtMobNumber.setError("Please enter your mobile number!");
+                } else if (mobNumber.length() < 10) {
+                    edTxtMobNumber.setError("Please enter a valid mobile number!");
                 } else if (!mobNumber.isEmpty() && btnText.equals("Next")) {
                     checkUser(mobNumber); // Check user
                     progressDialog.show();
@@ -132,6 +135,7 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_with_mob);
 
+        // If the user is already logged in, this will redirect the user to the Dashboard
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
             startActivity(new Intent(this, DashboardActivity.class));
@@ -145,7 +149,7 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
 
 //        -----------------------------------------------------------------------------------------------
 
-        //        Instantiate the setOnClickListener(s) at runtime
+        // Instantiate the setOnClickListener(s) at runtime
         txtEmailLogin = findViewById(R.id.txtEmailLogin);
         txtEmailLogin.setOnClickListener(this);
 

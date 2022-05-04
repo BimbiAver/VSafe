@@ -32,7 +32,7 @@ public class ExploreActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore);
 
-//        Instantiate the setOnClickListener(s) at runtime
+        // Instantiate the setOnClickListener(s) at runtime
         btnGetStarted = findViewById(R.id.btnGetStarted);
         btnGetStarted.setOnClickListener(this);
     }
