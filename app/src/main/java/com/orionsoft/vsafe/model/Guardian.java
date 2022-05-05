@@ -8,6 +8,14 @@ public class Guardian {
     private String conNumber;
     private String relationship;
 
+    public Guardian(String NICNumber, String name, String address, String conNumber, String relationship) {
+        this.NICNumber = NICNumber;
+        this.name = name;
+        this.address = address;
+        this.conNumber = conNumber;
+        this.relationship = relationship;
+    }
+
     public String getNICNumber() {
         return NICNumber;
     }

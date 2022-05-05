@@ -20,6 +20,18 @@ public class User {
         this.emailAddress = emailAddress;
     }
 
+    public User(String NICNumber, String firstName, String lastName, String gender, String dob, String address, String mobNumber, String emailAddress, String bloodGroup) {
+        this.NICNumber = NICNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.dob = dob;
+        this.address = address;
+        this.mobNumber = mobNumber;
+        this.emailAddress = emailAddress;
+        this.bloodGroup = bloodGroup;
+    }
+
     public String getNICNumber() {
         return NICNumber;
     }
