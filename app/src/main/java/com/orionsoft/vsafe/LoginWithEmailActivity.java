@@ -82,7 +82,6 @@ public class LoginWithEmailActivity extends AppCompatActivity implements View.On
                             progressDialog.dismiss();
                             if (usrCheckMsg.equals("User found!")) {
                                 sendEmail(emailAddress, user.getFirstName(), user.getLastName(), verificationCode);
-                                Toast.makeText(LoginWithEmailActivity.this, usrCheckMsg, Toast.LENGTH_SHORT).show();
                                 txtEmailOTPMsg.setText("Enter the verification code sent to " + emailAddress);
                                 txtEmailOTPMsg.setVisibility(View.VISIBLE);
                                 edTxtEmailVerify.setVisibility(View.VISIBLE);
@@ -259,10 +258,9 @@ public class LoginWithEmailActivity extends AppCompatActivity implements View.On
 //        -----------------------------------------------------------------------------------------------
 
     private void sendEmail(String emailAddress, String fName, String lName, String verificationCode) {
-        String url = "https://app.vsafe.care/send-email/send-email.php?";
 
         // Request a string response from the provided URL
-        stringRequest = new StringRequest(Request.Method.POST, url,
+        stringRequest = new StringRequest(Request.Method.POST, URLs.sendEmail,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -3,8 +3,10 @@ package com.orionsoft.vsafe;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
@@ -17,14 +19,29 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.orionsoft.vsafe.model.Guardian;
 import com.orionsoft.vsafe.model.User;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
+
+    String usrCheckMsg = "";
+    int responseStatusCode = 0;
+    String tempNIC, tempMobNum, tempEmail;
 
     private EditText edTxtRegNICNo;
     private EditText edTxtRegFName;
@@ -52,6 +69,10 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     final Calendar myCalendar= Calendar.getInstance();
     DatePickerDialog.OnDateSetListener date;
 
+    ProgressDialog progressDialog;
+
+    RequestQueue queue; // Volley RequestQueue
+    StringRequest stringRequest; // Volley StringRequest
     User user;
     Guardian guardian;
 
@@ -64,7 +85,60 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             case R.id.btnRegister:
                 if (validateFields() == true) {
                     fetchData(); // Fetch user inputs
-                    Toast.makeText(this, user.getFirstName() + " " + user.getLastName(), Toast.LENGTH_SHORT).show();
+                    // Check whether the user is already exist
+                    checkUser(user.getNICNumber(), user.getMobNumber(), user.getEmailAddress());
+                    progressDialog.show();
+
+                    if (responseStatusCode == 0) {
+                        checkUser(user.getNICNumber(), user.getMobNumber(), user.getEmailAddress()); // Check user
+                    }
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            progressDialog.dismiss();
+                            responseStatusCode = 0;
+                            if (usrCheckMsg.equals("User not found!")) {
+                                registerUser(); // User Registration
+                                progressDialog.show();
+
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    public void run() {
+                                        progressDialog.dismiss();
+                                        if (usrCheckMsg.equals("Registration Successful!")) {
+                                            Toast.makeText(RegistrationActivity.this, "Registered Successfully!", Toast.LENGTH_SHORT).show();
+                                            // Session management and redirection
+                                            // Storing the user in shared preferences
+                                            SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
+                                            // Direct to the Dashboard activity
+                                            finish();
+                                            startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                                        } else {
+                                            Toast.makeText(RegistrationActivity.this, "Something unexpected happened!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }, 3000);
+
+                            } else {
+                                if (user.getNICNumber().equals(tempNIC)) {
+                                    edTxtRegNICNo.setError("This user is already exists!");
+                                    edTxtRegNICNo.requestFocus();
+                                    Toast.makeText(RegistrationActivity.this, "This user is already exists!", Toast.LENGTH_SHORT).show();
+                                }
+                                if (user.getMobNumber().equals(tempMobNum)) {
+                                    edTxtRegMobNum.setError("This number is already in use!");
+                                    edTxtRegMobNum.requestFocus();
+                                    Toast.makeText(RegistrationActivity.this, "This number is already in use!", Toast.LENGTH_SHORT).show();
+                                }
+                                if (user.getEmailAddress().equals(tempEmail)) {
+                                    edTxtRegEmail.setError("This email is already in use!");
+                                    edTxtRegEmail.requestFocus();
+                                    Toast.makeText(RegistrationActivity.this, "This email is already in use!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                    }, 3000);
                 } else {
                     Toast.makeText(this, "Whoops! There were some problems with you inputs!", Toast.LENGTH_SHORT).show();
                 }
@@ -91,6 +165,10 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             finish();
             startActivity(new Intent(this, DashboardActivity.class));
         }
+
+        queue = Volley.newRequestQueue(this); // Instantiate the RequestQueue
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading...");
 
         edTxtRegNICNo = findViewById(R.id.edTxtRegNICNo);
         edTxtRegFName = findViewById(R.id.edTxtRegFName);
@@ -155,6 +233,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
 //        -----------------------------------------------------------------------------------------------
 
+    // Get data from user inputs
     private void fetchData() {
         // Getting value from the selected RadioButton
         raBtnGender = findViewById(raGroupRegGender.getCheckedRadioButtonId());
@@ -182,6 +261,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
 //        -----------------------------------------------------------------------------------------------
 
+    // Validate fields
     private boolean validateFields() {
         if (TextUtils.isEmpty(edTxtRegNICNo.getText().toString())) {
             edTxtRegNICNo.setError("Field cannot be empty!");
@@ -252,5 +332,109 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         } else {
             return false;
         }
+    }
+
+//        -----------------------------------------------------------------------------------------------
+
+    // Check whether the user is already exist
+    private void checkUser(String nic, String mobNumber, String email) {
+
+        stringRequest = new StringRequest(Request.Method.POST, URLs.usrCheck,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            usrCheckMsg = jsonObject.getString("message");
+                            responseStatusCode = 1;
+
+                            if (jsonObject.getString("message").equals("User found!")) {
+                                tempNIC = jsonObject.getJSONObject("user").getString("nic");
+                                tempMobNum = jsonObject.getJSONObject("user").getString("mob_number");
+                                tempEmail = jsonObject.getJSONObject("user").getString("email");
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("nic", nic);
+                params.put("mobNumber", mobNumber);
+                params.put("email", email);
+
+                return params;
+            }
+        };
+        queue.add(stringRequest);
+    }
+
+//        -----------------------------------------------------------------------------------------------
+
+    // User Registration
+    private void registerUser() {
+        stringRequest = new StringRequest(Request.Method.POST, URLs.registerUser,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            usrCheckMsg = jsonObject.getString("message");
+                            responseStatusCode = 1;
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("nic", user.getNICNumber());
+                params.put("firstName", user.getFirstName());
+                params.put("lastName", user.getLastName());
+                params.put("gender", user.getGender());
+                params.put("dob", user.getDob());
+                params.put("address", user.getAddress());
+                params.put("mobNumber", user.getMobNumber());
+                params.put("email", user.getEmailAddress());
+                params.put("bloodGroup", user.getBloodGroup());
+                params.put("gNIC", guardian.getNICNumber());
+                params.put("gName", guardian.getName());
+                params.put("gAddress", guardian.getAddress());
+                params.put("gConNumber", guardian.getConNumber());
+                params.put("relationship", guardian.getRelationship());
+
+                return params;
+            }
+        };
+        queue.add(stringRequest);
     }
 }

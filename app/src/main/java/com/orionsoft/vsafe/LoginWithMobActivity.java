@@ -82,7 +82,6 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
                             progressDialog.dismiss();
                             if (usrCheckMsg.equals("User found!")) {
                                 sendSMS(mobNumber, verificationCode);
-                                Toast.makeText(LoginWithMobActivity.this, usrCheckMsg, Toast.LENGTH_SHORT).show();
                                 txtMobOTPMsg.setText("Enter the OTP sent to +94" + mobNumber.substring(1));
                                 txtMobOTPMsg.setVisibility(View.VISIBLE);
                                 edTxtMobVerify.setVisibility(View.VISIBLE);
@@ -259,10 +258,9 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
 //        -----------------------------------------------------------------------------------------------
 
     private void sendSMS(String mobNumber, String verificationCode) {
-        String url = "https://app.vsafe.care/send-sms/send_sms.php?";
 
         // Request a string response from the provided URL
-        stringRequest = new StringRequest(Request.Method.POST, url,
+        stringRequest = new StringRequest(Request.Method.POST, URLs.sendSMS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
