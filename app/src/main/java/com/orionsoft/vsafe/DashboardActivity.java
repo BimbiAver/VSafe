@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 public class DashboardActivity extends AppCompatActivity {
@@ -12,6 +13,14 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        // Redirect the user to the Login activity, if the user is not logged in
+        if(!SharedPrefManager.getInstance(this).isLoggedIn()){
+            Intent intent = new Intent(DashboardActivity.this,LoginWithMobActivity.class);
+            startActivity(intent);
+            finishAffinity(); // Removes the connection of the existing activity to its stack
+            finish(); // The method onDestroy() is executed & exit the application
+        }
     }
 
 //        -----------------------------------------------------------------------------------------------
