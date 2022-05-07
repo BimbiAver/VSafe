@@ -86,7 +86,7 @@ public class LoginWithEmailActivity extends AppCompatActivity implements View.On
                                 txtEmailOTPMsg.setVisibility(View.VISIBLE);
                                 edTxtEmailVerify.setVisibility(View.VISIBLE);
                                 edTxtEmailVerify.requestFocus();
-                                btnEmailLogin.setText("Login");
+                                btnEmailLogin.setText("Log In");
                             } else {
                                 Toast.makeText(LoginWithEmailActivity.this, "No user with this email address has been found!", Toast.LENGTH_SHORT).show();
                             }

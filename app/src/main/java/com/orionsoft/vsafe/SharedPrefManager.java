@@ -10,11 +10,11 @@ public class SharedPrefManager {
 
     // The constants
     private static final String sharedPref = "UserSharedPref";
-    private static final String nic = null;
-    private static final String firstName = null;
-    private static final String lastName = null;
-    private static final String mobNumber = null;
-    private static final String email = null;
+    private static final String nic = "keyNIC";
+    private static final String firstName = "keyFName";
+    private static final String lastName = "keyLName";
+    private static final String mobNumber = "keyMobNumber";
+    private static final String email = "keyEmail";
 
     private static SharedPrefManager mInstance;
     private static Context ctx;

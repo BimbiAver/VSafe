@@ -86,7 +86,7 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
                                 txtMobOTPMsg.setVisibility(View.VISIBLE);
                                 edTxtMobVerify.setVisibility(View.VISIBLE);
                                 edTxtMobVerify.requestFocus();
-                                btnMobNumLogin.setText("Login");
+                                btnMobNumLogin.setText("Log In");
                             } else {
                                 Toast.makeText(LoginWithMobActivity.this, "No user with this mobile number has been found!", Toast.LENGTH_SHORT).show();
                             }
