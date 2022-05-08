@@ -53,7 +53,7 @@
         app:srcCompat="@drawable/logo_horizontal" />
 
     <ImageView
-        android:id="@+id/imageView30"
+        android:id="@+id/imgProfAvatar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="125dp"
@@ -82,7 +82,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView30">
+        app:layout_constraintTop_toBottomOf="@+id/imgProfAvatar">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -114,11 +114,10 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView37"
+                    android:id="@+id/txtProfNic"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="986532942V"
                     android:textColor="#303030"
                     android:textSize="18sp" />
             </TableRow>
@@ -149,12 +148,11 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView39"
+                    android:id="@+id/txtProfName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:inputType="textMultiLine"
-                    android:text="Deshan D. Abeykoon"
                     android:textColor="#303030"
                     android:textSize="18sp" />
             </TableRow>
@@ -185,12 +183,11 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView43"
+                    android:id="@+id/txtProfGender"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:inputType="textMultiLine"
-                    android:text="Male"
                     android:textColor="#303030"
                     android:textSize="18sp" />
 
@@ -222,12 +219,11 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView45"
+                    android:id="@+id/txtProfDOB"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:inputType="textMultiLine"
-                    android:text="1998-03-24"
                     android:textColor="#303030"
                     android:textSize="18sp" />
             </TableRow>
@@ -258,12 +254,11 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView50"
+                    android:id="@+id/txtProfAddress"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:inputType="textMultiLine"
-                    android:text="Colombo, Sri Lanka"
                     android:textColor="#303030"
                     android:textSize="18sp" />
             </TableRow>
@@ -294,12 +289,11 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView53"
+                    android:id="@+id/txtProfMobNum"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:inputType="textMultiLine"
-                    android:text="+94774246925"
                     android:textColor="#303030"
                     android:textSize="18sp" />
             </TableRow>
@@ -330,12 +324,11 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView56"
+                    android:id="@+id/txtProfEmail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:inputType="textMultiLine"
-                    android:text="contact@bimbiaver.com"
                     android:textColor="#303030"
                     android:textSize="18sp" />
             </TableRow>
@@ -366,12 +359,11 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView58"
+                    android:id="@+id/txtProfBloodGrp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:inputType="textMultiLine"
-                    android:text="A+"
                     android:textColor="#303030"
                     android:textSize="18sp" />
 
@@ -417,12 +409,11 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView61"
+                    android:id="@+id/txtProfGNic"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:inputType="textMultiLine"
-                    android:text="961548885V"
                     android:textColor="#303030"
                     android:textSize="18sp" />
 
@@ -454,12 +445,11 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView64"
+                    android:id="@+id/txtProfGName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:inputType="textMultiLine"
-                    android:text="Sanath Perera"
                     android:textColor="#303030"
                     android:textSize="18sp" />
 
@@ -491,12 +481,11 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView67"
+                    android:id="@+id/txtProfGAddress"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:inputType="textMultiLine"
-                    android:text="Colombo, Sri Lanka"
                     android:textColor="#303030"
                     android:textSize="18sp" />
 
@@ -528,12 +517,11 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView70"
+                    android:id="@+id/txtProfGConNum"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:inputType="textMultiLine"
-                    android:text="+94713492761"
                     android:textColor="#303030"
                     android:textSize="18sp" />
 
@@ -565,12 +553,11 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView72"
+                    android:id="@+id/txtProfRelationship"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:inputType="textMultiLine"
-                    android:text="Sibling"
                     android:textColor="#303030"
                     android:textSize="18sp" />
             </TableRow>
