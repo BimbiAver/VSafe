@@ -2,6 +2,7 @@ package com.orionsoft.vsafe;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,6 +19,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     private Button btnLogout;
 
+    private CardView cdViewHelp;
+    private CardView cdViewProfile;
+
     User user;
 
     //    Activity wide interface - onClick() method
@@ -26,6 +30,16 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         switch (view.getId()) {
             case R.id.btnLogout:
                 logout(); // Logout the user
+                break;
+            case R.id.cdViewHelp:
+                Intent intent = new Intent(this, HelpActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                break;
+            case R.id.cdViewProfile:
+                Intent intent2 = new Intent(this, ProfileActivity.class);
+                startActivity(intent2);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
             default:
                 break;
@@ -46,13 +60,17 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         }
 
         txtGreet = findViewById(R.id.txtGreet);
-
-        // Instantiate the setOnClickListener(s) at runtime
         btnLogout = findViewById(R.id.btnLogout);
-        btnLogout.setOnClickListener(this);
+        cdViewHelp = findViewById(R.id.cdViewHelp);
+        cdViewProfile = findViewById(R.id.cdViewProfile);
 
         user = SharedPrefManager.getInstance(this).getUser();
         txtGreet.setText("Hello, " + user.getFirstName() + " !");
+
+        // Instantiate the setOnClickListener(s) at runtime
+        btnLogout.setOnClickListener(this);
+        cdViewHelp.setOnClickListener(this);
+        cdViewProfile.setOnClickListener(this);
     }
 
 //        -----------------------------------------------------------------------------------------------
@@ -74,6 +92,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 })
                 .setNegativeButton("No", null).show();
     }
+
+//        -----------------------------------------------------------------------------------------------
 
     private void logout() {
         new AlertDialog.Builder(this)

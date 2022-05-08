@@ -230,6 +230,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cdViewProfile"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
@@ -269,12 +270,16 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cdViewHelp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="15dp"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:contextClickable="true"
+                android:longClickable="true"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="7dp"
                 app:contentPadding="20dp">

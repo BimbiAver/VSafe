@@ -95,9 +95,9 @@ public class LoginWithMobActivity extends AppCompatActivity implements View.OnCl
 
                 }
 //  ----------------- Login --------------
-                if (mobVerify.isEmpty() && btnText.equals("Login")) {
+                if (mobVerify.isEmpty() && btnText.equals("Log In")) {
                     edTxtMobVerify.setError("Please enter the verification code!");
-                } else if (!mobNumber.isEmpty() && !mobVerify.isEmpty() && btnText.equals("Login")){
+                } else if (!mobNumber.isEmpty() && !mobVerify.isEmpty() && btnText.equals("Log In")){
                     if (mobVerify.equals(verificationCode)){
 //                        Session management and redirection
                         // Storing the user in shared preferences

@@ -95,9 +95,9 @@ public class LoginWithEmailActivity extends AppCompatActivity implements View.On
 
                 }
 //  ----------------- Login --------------
-                if (emailVerify.isEmpty() && btnText.equals("Login")) {
+                if (emailVerify.isEmpty() && btnText.equals("Log In")) {
                     edTxtEmailVerify.setError("Please enter the verification code!");
-                } else if (!emailAddress.isEmpty() && !emailVerify.isEmpty() && btnText.equals("Login")){
+                } else if (!emailAddress.isEmpty() && !emailVerify.isEmpty() && btnText.equals("Log In")){
                     if (emailVerify.equals(verificationCode)){
 //                        Session management and redirection
                         // Storing the user in shared preferences

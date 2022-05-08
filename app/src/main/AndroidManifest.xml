@@ -4,6 +4,7 @@
     <!-- Android Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VSafe">
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".HelpActivity"
             android:exported="false" />
