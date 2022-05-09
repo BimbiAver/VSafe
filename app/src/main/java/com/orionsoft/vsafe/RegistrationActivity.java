@@ -155,6 +155,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
+//        -----------------------------------------------------------------------------------------------
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -269,7 +271,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             edTxtRegNICNo.setError("Invalid NIC number!");
         }
 
-        if (TextUtils.isEmpty(edTxtRegLName.getText().toString())) {
+        if (TextUtils.isEmpty(edTxtRegFName.getText().toString())) {
             edTxtRegFName.setError("Field cannot be empty!");
         }
 

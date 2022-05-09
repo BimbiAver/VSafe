@@ -127,10 +127,18 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     Toast.makeText(ProfileActivity.this, "Something unexpected happened!", Toast.LENGTH_SHORT).show();
                 }
             }
-        }, 2000);
+        }, 3000);
+    }
 
+//        -----------------------------------------------------------------------------------------------
 
-
+    // When the BACK button is pressed, the activity on the stack is restarted
+    @Override
+    public void onRestart()
+    {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
     }
 
 //        -----------------------------------------------------------------------------------------------

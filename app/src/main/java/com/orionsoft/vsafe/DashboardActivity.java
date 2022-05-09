@@ -79,6 +79,17 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
 //        -----------------------------------------------------------------------------------------------
 
+    // When the BACK button is pressed, the activity on the stack is restarted
+    @Override
+    public void onRestart()
+    {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
+
+//        -----------------------------------------------------------------------------------------------
+
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)

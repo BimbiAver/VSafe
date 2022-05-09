@@ -8,4 +8,5 @@ public class URLs {
     public static final String sendEmail = rootURL + "send-email/send-email.php";
     public static final String registerUser = rootURL + "add-user.php";
     public static final String getUser = rootURL + "get-user.php";
+    public static final String updateUser = rootURL + "update-user.php";
 }
