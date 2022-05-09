@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +28,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     String usrCheckMsg = "";
 
@@ -46,12 +48,32 @@ public class ProfileActivity extends AppCompatActivity {
 
     private ImageView imgProfAvatar;
 
+    private Button btnProfEdit;
+
     ProgressDialog progressDialog;
 
     RequestQueue queue; // Volley RequestQueue
     StringRequest stringRequest; // Volley StringRequest
     User user;
     Guardian guardian;
+
+//        -----------------------------------------------------------------------------------------------
+
+    //    Activity wide interface - onClick() method
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btnProfEdit:
+                Intent intent = new Intent(this, EditProfileActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                break;
+            default:
+                break;
+        }
+    }
+
+//        -----------------------------------------------------------------------------------------------
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +96,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         imgProfAvatar = findViewById(R.id.imgProfAvatar);
 
+        btnProfEdit = findViewById(R.id.btnProfEdit);
+
 
         queue = Volley.newRequestQueue(this); // Instantiate the RequestQueue
 
@@ -82,6 +106,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
+
+        // Instantiate the setOnClickListener(s) at runtime
+        btnProfEdit.setOnClickListener(this);
 
         progressDialog.show(); // Show ProgressDialog
 

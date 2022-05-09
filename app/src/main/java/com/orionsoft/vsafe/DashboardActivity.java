@@ -24,6 +24,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     User user;
 
+//        -----------------------------------------------------------------------------------------------
+
     //    Activity wide interface - onClick() method
     @Override
     public void onClick(View view) {
@@ -45,6 +47,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 break;
         }
     }
+
+//        -----------------------------------------------------------------------------------------------
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

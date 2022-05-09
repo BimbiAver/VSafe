@@ -14,6 +14,8 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
     private CardView cdViewEmailUs;
     private CardView cdViewWeb;
 
+//        -----------------------------------------------------------------------------------------------
+
     //    Activity wide interface - onClick() method
     @Override
     public void onClick(View view) {
@@ -38,6 +40,8 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
+//        -----------------------------------------------------------------------------------------------
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
