@@ -1,6 +1,8 @@
 package com.orionsoft.vsafe.model;
 
-public class Guardian {
+import java.io.Serializable;
+
+public class Guardian implements Serializable {
 
     private String NICNumber;
     private String name;

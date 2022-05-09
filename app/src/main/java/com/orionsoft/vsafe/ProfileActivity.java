@@ -25,6 +25,7 @@ import com.orionsoft.vsafe.model.User;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,6 +66,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         switch (view.getId()) {
             case R.id.btnProfEdit:
                 Intent intent = new Intent(this, EditProfileActivity.class);
+                intent.putExtra("userObj", user); // Pass User object from this to EditProfile Activity
+                intent.putExtra("guardObj", guardian); // Pass Guardian object from this to EditProfile Activity
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
