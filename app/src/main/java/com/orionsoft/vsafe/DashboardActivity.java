@@ -21,6 +21,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     private CardView cdViewHelp;
     private CardView cdViewProfile;
+    private CardView cdViewSafetyPre;
 
     User user;
 
@@ -41,6 +42,11 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             case R.id.cdViewProfile:
                 Intent intent2 = new Intent(this, ProfileActivity.class);
                 startActivity(intent2);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                break;
+            case R.id.cdViewSafetyPre:
+                Intent intent3 = new Intent(this, SafetyPrecautionsActivity.class);
+                startActivity(intent3);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
             default:
@@ -67,6 +73,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         btnLogout = findViewById(R.id.btnLogout);
         cdViewHelp = findViewById(R.id.cdViewHelp);
         cdViewProfile = findViewById(R.id.cdViewProfile);
+        cdViewSafetyPre = findViewById(R.id.cdViewSafetyPre);
 
         user = SharedPrefManager.getInstance(this).getUser();
         txtGreet.setText("Hello, " + user.getFirstName() + " !");
@@ -75,6 +82,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         btnLogout.setOnClickListener(this);
         cdViewHelp.setOnClickListener(this);
         cdViewProfile.setOnClickListener(this);
+        cdViewSafetyPre.setOnClickListener(this);
     }
 
 //        -----------------------------------------------------------------------------------------------
