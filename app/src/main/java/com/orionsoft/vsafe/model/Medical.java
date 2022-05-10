@@ -2,11 +2,19 @@ package com.orionsoft.vsafe.model;
 
 public class Medical {
 
+    private String id;
     private String disease;
     private String timePeriod;
     private String underTreat;
 
     public Medical(String disease, String timePeriod, String underTreat) {
+        this.disease = disease;
+        this.timePeriod = timePeriod;
+        this.underTreat = underTreat;
+    }
+
+    public Medical(String id, String disease, String timePeriod, String underTreat) {
+        this.id = id;
         this.disease = disease;
         this.timePeriod = timePeriod;
         this.underTreat = underTreat;
@@ -34,5 +42,13 @@ public class Medical {
 
     public void setUnderTreat(String underTreat) {
         this.underTreat = underTreat;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

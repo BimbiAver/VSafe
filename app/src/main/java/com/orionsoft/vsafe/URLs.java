@@ -10,4 +10,6 @@ public class URLs {
     public static final String getUser = rootURL + "get-user.php";
     public static final String updateUser = rootURL + "update-user.php";
     public static final String addMedical = rootURL + "add-medical.php";
+    public static final String getMedical = rootURL + "get-medical.php";
+    public static final String deleteMedical = rootURL + "delete-medical.php";
 }
