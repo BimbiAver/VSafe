@@ -11,17 +11,39 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.orionsoft.vsafe.model.User;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class SplashActivity extends AppCompatActivity {
 
     private final String sharedPref = "AppStatus";
 
     CheckNetwork checkNetwork = new CheckNetwork();
 
+    RequestQueue queue; // Volley RequestQueue
+    StringRequest stringRequest; // Volley StringRequest
+
 //        -----------------------------------------------------------------------------------------------
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        queue = Volley.newRequestQueue(this); // Instantiate the RequestQueue
+
+        // Call initial server request
+        checkUser("abc@mail.com");
 
 //        -----------------------------------------------------------------------------------------------
 
@@ -66,5 +88,45 @@ public class SplashActivity extends AppCompatActivity {
                 }
             }, 2000);
         }
+    }
+
+//        -----------------------------------------------------------------------------------------------
+
+    private void checkUser(String emailAddress) {
+
+        stringRequest = new StringRequest(Request.Method.POST, URLs.usrCheck,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String usrCheckMsg = jsonObject.getString("message");
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("email", emailAddress);
+
+                return params;
+            }
+        };
+        queue.add(stringRequest);
     }
 }
