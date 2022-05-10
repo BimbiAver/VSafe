@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VSafe">
         <activity
+            android:name=".AddMedicalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MedicalDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".SafetyPrecautionsActivity"
             android:exported="false" />
         <activity

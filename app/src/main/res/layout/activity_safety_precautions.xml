@@ -83,4 +83,79 @@
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView43" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/scrollview_bg"
+        android:fadeScrollbars="false"
+        android:fillViewport="true"
+        android:paddingStart="5dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView45">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.gouravkhunger.accolib.widget.Accordion
+                android:id="@+id/accordion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-10dp"
+                app:text="Hazards vary depending on where you live. Identify the hazards near you so you can create your emergency plan.  Emergencies affect us all differently and help is not always available in the way we expect. Learn what steps you can take to ensure your needs are met when it matters most.   •Be prepared •Be informed •Connect with neighbours •Financial preparedness •Protect your pets"
+                app:textColor="#6D6A6A"
+                app:textSize="16sp"
+                app:title="Before an emergency"
+                app:titleColor="#303030"
+                app:titleSize="18sp" />
+
+            <com.gouravkhunger.accolib.widget.Accordion
+                android:id="@+id/accordion3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-10dp"
+                app:text="Emergencies have the potential to cause serious harm to people, property, the economy and the environment. Make sure you know who to call and what to do during an emergency or disaster.  Protecting yourself and your loved ones will depend on the hazard, but these tips can help you manage emergencies and disasters safely.  •Shelter-in-place •Evacuation alerts and orders •Emergency evacuation payments •Stay informed •Connect with neighbours •If there is time •We are all in this together"
+                app:textColor="#6D6A6A"
+                app:textSize="16sp"
+                app:title="During an emergency"
+                app:titleColor="#303030"
+                app:titleSize="18sp" />
+
+            <com.gouravkhunger.accolib.widget.Accordion
+                android:id="@+id/accordion4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-10dp"
+                app:text="The lingering effects of unexpected emergencies and disasters are different for everyone. Knowing what to do after an emergency can help reduce stress and aid in a quicker recovery.  If you had to evacuate, you cannot return home until authorities have told you it’s safe to do so. Use extreme caution at all times.  Being prepared can help speed up your recovery time, so you can get back to your life and work sooner.  •Recovery is a process •Re-entry •Connect with neighbours •Your mental health •Recovery assistance •We are all in this together"
+                app:textColor="#6D6A6A"
+                app:textSize="16sp"
+                app:title="After an emergency"
+                app:titleColor="#303030"
+                app:titleSize="18sp" />
+
+            <com.gouravkhunger.accolib.widget.Accordion
+                android:id="@+id/accordion5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-10dp"
+                app:text="Check with your community to learn how to help others during severe weather events. If you are concerned for someone’s safety, call:  •119 if someone is in distress or in an unsafe place •1990 if they’re unconscious or need medical help"
+                app:textColor="#6D6A6A"
+                app:textSize="16sp"
+                app:title="Helping others"
+                app:titleColor="#303030"
+                app:titleSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
