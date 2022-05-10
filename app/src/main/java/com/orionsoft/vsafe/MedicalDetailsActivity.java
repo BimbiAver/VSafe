@@ -43,6 +43,17 @@ public class MedicalDetailsActivity extends AppCompatActivity implements View.On
 
 //        -----------------------------------------------------------------------------------------------
 
+    // When the BACK button is pressed, the activity on the stack is restarted
+    @Override
+    public void onRestart()
+    {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
+
+//        -----------------------------------------------------------------------------------------------
+
     @Override
     public void onBackPressed() {
         finish();
