@@ -14,6 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VSafe">
         <activity
+            android:name=".ReportCaseDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReportCaseDepartmentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReportCaseSituationActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddMedicalActivity"
             android:exported="false" />
         <activity
