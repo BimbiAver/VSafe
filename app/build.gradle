@@ -43,5 +43,8 @@ dependencies {
     // Accordion Library for Android
     implementation 'com.github.GouravKhunger:AccoLib:v1.0.0'
 
+    // Google Play Services Location
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
+
 
 }

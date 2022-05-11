@@ -106,18 +106,32 @@ public class ReportCaseDepartmentsActivity extends AppCompatActivity implements 
     private void fetchSelection() {
         if (chBoxRCDepartPolice.isChecked()) {
             department.setPolice(1);
+        } else {
+            department.setPolice(0);
         }
+
         if (chBoxRCDepartHospital.isChecked()) {
             department.setHospital(1);
+        } else {
+            department.setHospital(0);
         }
+
         if (chBoxRCDepartFireBr.isChecked()) {
             department.setFireBrigade(1);
+        } else {
+            department.setFireBrigade(0);
         }
+
         if (chBoxRCDepartDMC.isChecked()) {
             department.setDmc(1);
+        } else {
+            department.setDmc(0);
         }
+
         if (chBoxRCDepartMWCA.isChecked()) {
             department.setMwca(1);
+        } else {
+            department.setMwca(0);
         }
     }
 }
