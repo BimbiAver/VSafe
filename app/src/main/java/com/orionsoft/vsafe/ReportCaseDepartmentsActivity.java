@@ -127,7 +127,7 @@ public class ReportCaseDepartmentsActivity extends AppCompatActivity implements 
         } else {
             department.setDmc(0);
         }
-
+        
         if (chBoxRCDepartMWCA.isChecked()) {
             department.setMwca(1);
         } else {

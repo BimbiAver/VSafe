@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -33,7 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class ReportCaseDetailsActivity extends AppCompatActivity {
+public class ReportCaseDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
     String dateTime;
     String tempDeparts = "";
@@ -46,12 +48,31 @@ public class ReportCaseDetailsActivity extends AppCompatActivity {
     private EditText edTxtRCDetailDetails;
     private EditText edTxtRCDetailLocation;
 
+    private Button btnRCDetailFImg;
+    private Button btnRCDetailBImg;
+    private Button btnRCDetailSubmit;
+
     Case aCase;
     Department department;
 
     // Initializing FusedLocationProviderClient object
     FusedLocationProviderClient mFusedLocationClient;
     int PERMISSION_ID = 44;
+
+//        -----------------------------------------------------------------------------------------------
+
+    //    Activity wide interface - onClick() method
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btnRCDetailFImg:
+
+            default:
+                break;
+        }
+    }
+
+//        -----------------------------------------------------------------------------------------------
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +84,15 @@ public class ReportCaseDetailsActivity extends AppCompatActivity {
         edTxtRCDetailDepart = findViewById(R.id.edTxtRCDetailDepart);
         edTxtRCDetailDetails = findViewById(R.id.edTxtRCDetailDetails);
         edTxtRCDetailLocation = findViewById(R.id.edTxtRCDetailLocation);
+
+        btnRCDetailFImg = findViewById(R.id.btnRCDetailFImg);
+        btnRCDetailBImg = findViewById(R.id.btnRCDetailBImg);
+        btnRCDetailSubmit = findViewById(R.id.btnRCDetailSubmit);
+
+        // Instantiate the setOnClickListener(s) at runtime
+        btnRCDetailFImg.setOnClickListener(this);
+        btnRCDetailBImg.setOnClickListener(this);
+        btnRCDetailSubmit.setOnClickListener(this);
 
         // Retrieve objects from the previous activity
         aCase = (Case) getIntent().getSerializableExtra("caseObj");
@@ -228,4 +258,10 @@ public class ReportCaseDetailsActivity extends AppCompatActivity {
             getLastLocation();
         }
     }
+
+//        -----------------------------------------------------------------------------------------------
+//        -----------------------------------------------------------------------------------------------
+//        -----------------------------------------------------------------------------------------------
+
+    
 }
