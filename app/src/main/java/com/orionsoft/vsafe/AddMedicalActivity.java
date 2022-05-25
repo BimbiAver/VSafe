@@ -202,7 +202,7 @@ public class AddMedicalActivity extends AppCompatActivity implements View.OnClic
 
 //        -----------------------------------------------------------------------------------------------
 
-    // User Update
+    // Add medical
     private void addMedical() {
         stringRequest = new StringRequest(Request.Method.POST, URLs.addMedical,
                 new Response.Listener<String>()
