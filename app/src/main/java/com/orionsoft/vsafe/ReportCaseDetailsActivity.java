@@ -123,12 +123,14 @@ public class ReportCaseDetailsActivity extends AppCompatActivity implements View
                         progressDialog.dismiss();
                         if (caseCheckMsg.equals("Case Added Successfully!")) {
                             Toast.makeText(ReportCaseDetailsActivity.this, "Case Added Successfully!", Toast.LENGTH_SHORT).show();
+                            finishAffinity();
                             finish();
+                            startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
                         } else {
                             Toast.makeText(ReportCaseDetailsActivity.this, "Something unexpected happened!", Toast.LENGTH_SHORT).show();
                         }
                     }
-                }, 3500);
+                }, 4000);
                 break;
             default:
                 break;

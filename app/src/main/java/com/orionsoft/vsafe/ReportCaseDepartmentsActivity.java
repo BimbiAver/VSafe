@@ -78,7 +78,7 @@ public class ReportCaseDepartmentsActivity extends AppCompatActivity implements 
         // Instantiate the setOnClickListener(s) at runtime
         btnRCDepartNext.setOnClickListener(this);
 
-
+        preSetDeparts(); // Pre-Set departments according to the situation
     }
 
 //        -----------------------------------------------------------------------------------------------
@@ -132,6 +132,39 @@ public class ReportCaseDepartmentsActivity extends AppCompatActivity implements 
             department.setMwca(1);
         } else {
             department.setMwca(0);
+        }
+    }
+
+    //        -----------------------------------------------------------------------------------------------
+
+    // Pre-Set departments according to the situation
+    private void preSetDeparts() {
+        switch(aCase.getSituation()) {
+            case "Accident":
+            case "Attack":
+                chBoxRCDepartPolice.setChecked(true);
+                chBoxRCDepartHospital.setChecked(true);
+                break;
+            case "Robbery":
+            case "Kidnap":
+                chBoxRCDepartPolice.setChecked(true);
+                break;
+            case "Medical Emergency":
+                chBoxRCDepartHospital.setChecked(true);
+                break;
+            case "Sexual Harassment":
+                chBoxRCDepartPolice.setChecked(true);
+                chBoxRCDepartMWCA.setChecked(true);
+                break;
+            case "Fire":
+                chBoxRCDepartPolice.setChecked(true);
+                chBoxRCDepartHospital.setChecked(true);
+                chBoxRCDepartFireBr.setChecked(true);
+                break;
+            case "Natural Disaster":
+                chBoxRCDepartPolice.setChecked(true);
+                chBoxRCDepartDMC.setChecked(true);
+                break;
         }
     }
 }
