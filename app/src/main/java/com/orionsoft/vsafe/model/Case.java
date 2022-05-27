@@ -30,6 +30,15 @@ public class Case implements Serializable {
 
     }
 
+    public Case(String id, String situation, String details, String dateTime, String location, int status) {
+        this.id = id;
+        this.situation = situation;
+        this.details = details;
+        this.dateTime = dateTime;
+        this.location = location;
+        this.status = status;
+    }
+
     public String getId() {
         return id;
     }

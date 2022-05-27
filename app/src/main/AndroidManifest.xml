@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VSafe">
         <activity
+            android:name=".PreviousCasesActivity"
+            android:exported="false" />
+        <activity
             android:name=".ReportCaseDetailsActivity"
             android:exported="false"
             android:screenOrientation="portrait"
