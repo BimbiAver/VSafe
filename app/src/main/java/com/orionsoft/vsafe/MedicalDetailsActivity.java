@@ -112,7 +112,7 @@ public class MedicalDetailsActivity extends AppCompatActivity implements View.On
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView idView = listView.findViewById(R.id.txtMedId);
+                TextView idView = view.findViewById(R.id.txtMedId);
                 medID = idView.getText().toString();
                 registerForContextMenu(listView);
                 return false;
