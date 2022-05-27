@@ -117,20 +117,38 @@ public class ReportCaseDetailsActivity extends AppCompatActivity implements View
                 addCase(); // Add case
                 progressDialog.show();
 
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        progressDialog.dismiss();
-                        if (caseCheckMsg.equals("Case Added Successfully!")) {
-                            Toast.makeText(ReportCaseDetailsActivity.this, "Case Added Successfully!", Toast.LENGTH_SHORT).show();
-                            finishAffinity();
-                            finish();
-                            startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
-                        } else {
-                            Toast.makeText(ReportCaseDetailsActivity.this, "Something unexpected happened!", Toast.LENGTH_SHORT).show();
+                if (frontImage.equals("") && backImage.equals("")) {
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            progressDialog.dismiss();
+                            if (caseCheckMsg.equals("Case Added Successfully!")) {
+                                Toast.makeText(ReportCaseDetailsActivity.this, "Case Added Successfully!", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(getApplicationContext(), DashboardActivity.class);
+                                startActivity(i);
+                                finish();
+                            } else {
+                                Toast.makeText(ReportCaseDetailsActivity.this, "Something unexpected happened!", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                }, 4000);
+                    }, 3500);
+                } else {
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            progressDialog.dismiss();
+                            if (caseCheckMsg.equals("Case Added Successfully!")) {
+                                Toast.makeText(ReportCaseDetailsActivity.this, "Case Added Successfully!", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(getApplicationContext(), DashboardActivity.class);
+                                startActivity(i);
+                                finish();
+                            } else {
+                                Toast.makeText(ReportCaseDetailsActivity.this, "Something unexpected happened!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }, 7000);
+                }
+
                 break;
             default:
                 break;
@@ -353,10 +371,10 @@ public class ReportCaseDetailsActivity extends AppCompatActivity implements View
 
                 if (imgCheck.equals("fImage")) {
                     frontImage = getStringImage(bitmapImage);
-                    btnRCDetailFImg.setText("front-image.jpeg");
+                    btnRCDetailFImg.setText("front-image.png");
                 } else if (imgCheck.equals("bImage")) {
                     backImage = getStringImage(bitmapImage);
-                    btnRCDetailBImg.setText("back-image.jpeg");
+                    btnRCDetailBImg.setText("back-image.png");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -366,7 +384,7 @@ public class ReportCaseDetailsActivity extends AppCompatActivity implements View
 
     public String getStringImage(Bitmap bmp){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        bmp.compress(Bitmap.CompressFormat.JPEG, 50, baos);
         byte[] imageBytes = baos.toByteArray();
         String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         return encodedImage;
