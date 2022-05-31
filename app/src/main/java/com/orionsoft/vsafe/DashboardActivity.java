@@ -116,6 +116,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     public void onRestart()
     {
         super.onRestart();
+        finishAffinity();
         finish();
         startActivity(getIntent());
     }
